@@ -8,8 +8,21 @@
             @foreach ($todos as $todo)
                 <div class="single-todo {{$todo->is_completed ? '' : 'todo-completed'}}">
                     <li>{{$todo->title}}</li>
-                    <li>{{$todo->expiration_date}}</li>
-                    <button><a href="{{route('admin.todos.show', $todo->slug)}}">apri</a></button> 
+                    
+                    <div class="date-button-container">
+                        <div class="expiration-date">
+                            <div class="expiration-date-text">{{$todo->expiration_date}}</div>
+                        </div>
+                        <div class="icon">
+                            <div class="open-icon">
+                                <a href="{{route('admin.todos.show', $todo->slug)}}"><i class="fa-solid fa-magnifying-glass"></i></a>
+                            </div>
+                            <div class="edit-icon">
+                                <a href="{{route('admin.todos.edit', $todo->slug)}}"><i class="fa-solid fa-pen"></i></a>    
+                            </div>   
+                        </div>
+                    </div>
+
                 </div>   
             @endforeach
         </ul>

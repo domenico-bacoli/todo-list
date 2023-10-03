@@ -1,5 +1,9 @@
 @import '~bootstrap/scss/bootstrap';
 
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+
 li{
     list-style-type: none;
 }
@@ -53,6 +57,41 @@ a{
                 border-radius: 20px;
                 padding: 20px;
                 box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+
+                li{
+                    font-weight: 500;
+                }
+
+                .date-button-container{
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .icon{
+                        display: flex;
+                        gap: 8px;
+                    }
+
+                    .open-icon, .edit-icon{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                        background-color: blue;
+                        color: white;
+                    }
+
+                    a{
+                        color: white;
+                    }
+
+                    .expiration-date-text{
+                        font-size: 0.8em;
+                    }
+                }
             }
         }
 
@@ -68,7 +107,6 @@ a{
                 align-items: center;
                 width: 80px;
                 height: 80px;
-                padding-bottom: 6px;
                 border: none;
                 border-radius: 50%;
                 background-color: white;
