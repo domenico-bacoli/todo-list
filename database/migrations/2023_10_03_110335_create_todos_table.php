@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title', 100)->unique();
             $table->text('note')->nullable();
             $table->date('expiration_date');
-            $table->boolean('is_completed')->default(false);
+            $table->boolean('is_completed');
             $table->string('slug', 100);
             $table->timestamps();
         });

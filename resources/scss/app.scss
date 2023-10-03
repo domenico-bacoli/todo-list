@@ -20,6 +20,10 @@ a{
     height: calc(100vh - 72px);
 }
 
+.todo-completed{
+    opacity: .3;
+}
+
 // START admin.todos.index style
 .container{
 
@@ -29,44 +33,106 @@ a{
         justify-content: center;
         position: relative;
         width: 1100px;
-        height: 600px;
-        background-color: rgba(128, 128, 128, 0.2);
+        // height: 600px;
+        background-color: #f7f9fb;
+        background-image: linear-gradient(62deg, #f7f9fb 0%, #fbfbff 100%);
+        box-shadow: rgba(100, 100, 111, 0.23) 0px 7px 29px 0px;
         border-radius: 30px;
-        padding: 20px 30px;
+        padding: 10px 20px 0;
 
         h1{
-            padding: 10px;
+            font-size: 3em;
+            padding-top: 10px;
+            padding-left: 20px;
         }
-        
 
         .todo-index{
             display: flex;
             flex-flow: row wrap;
-            gap: 20px;
-            padding: 40px 20px;
+            gap: 26px;
+            padding: 20px 20px 60px;
             overflow: auto;
+            
+            .single-todo:nth-child(1){
+                background-color: #FEA67D;
+            }
+            .single-todo:nth-child(2){
+                background-color: #FFCF7C;
+            }
+
+            .single-todo:nth-child(3){
+                background-color: #E7F19A;
+            }
+
+            .single-todo:nth-child(4){
+                background-color: #BE9EFD;
+            }
+
+            .single-todo:nth-child(5){
+                background-color: #E7F19A;
+            }
+            .single-todo:nth-child(6){
+                background-color: white;
+            }
+
+            .single-todo:nth-child(7){
+                background-color: #FEA67D;
+            }
+
+            .single-todo:nth-child(8){
+                background-color: #FFCF7C;
+            }
+
+            .single-todo:nth-child(9){
+                background-color: #FFCF7C;
+            }
+            .single-todo:nth-child(10){
+                background-color: #BE9EFD;
+            }
+
+            .single-todo:nth-child(11){
+                background-color: #FFCF7C;
+            }
+
+            .single-todo:nth-child(12){
+                background-color: #E7F19A;
+            }
 
             .single-todo{
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
                 align-items: center;
-                width: calc(100% / 4 - (20px / 4 * 3));
-                height: calc(100% / 2 - (20px / 2 * 1));
-                background-color: white;
+                width: calc(100% / 4 - (26px / 4 * 3));
+                height: calc(100% / 2 - (26px / 2 * 1));
                 border-radius: 20px;
                 padding: 20px;
                 box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
 
-                li{
-                    font-weight: 500;
+                .single-todo-top{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    width: 100%;
+
+                    .todo-title{
+                        width: 80%;
+                    }
+                    
+                    input{
+                        font-size: 26px;
+                        box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
+                        cursor: pointer;
+                        margin: 0;
+                    }
                 }
 
                 .date-button-container{
                     width: 100%;
                     display: flex;
+                    align-items: flex-start;
                     justify-content: space-between;
-                    align-items: center;
+                    gap: 6px;
 
                     .icon{
                         display: flex;
@@ -77,11 +143,15 @@ a{
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                        width: 40px;
-                        height: 40px;
+                        width: 36px;
+                        height: 36px;
                         border-radius: 50%;
-                        background-color: blue;
+                        background-color: #252525;
                         color: white;
+                        
+                        i{
+                            font-size: 0.82em;
+                        }
                     }
 
                     a{
@@ -110,9 +180,9 @@ a{
                 border: none;
                 border-radius: 50%;
                 background-color: white;
-                box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.6);
+                box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.4);
                 font-size: 4em;
-                color: rgb(1, 1, 155);
+                color: rgb(40, 114, 252);
             }
         }
     }

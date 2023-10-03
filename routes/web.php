@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CompletedController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\TodoController;
 use App\Http\Controllers\ProfileController;
@@ -29,10 +30,16 @@ Route::get('/', function () {
 //che il nome delle rotte inizi con "admin."
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function(){
+    Route::post('completed/{todo}', [CompletedController::class, 'index'])->name('completed.index');
+    
     Route::resource('todos', TodoController::class)->parameters(['todos' => 'todo:slug']);
 
     Route::get('/', [DashboardController::class, 'home']);
+
+    
+    
 });
+
 
 
 
