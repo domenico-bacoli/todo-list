@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="container container-centered">
-    <div class="todo-container">
+    <div class="todo-container-index">
         <h1>Promemoria</h1>
         <div class="todo-index">
             @foreach ($todos as $todo)
-                <div class="single-todo {{$todo->is_completed ? 'todo-completed' : ''}}">
+                <div class="single-todo {{$todo->is_completed ? 'todo-completed' : ''}} ">
                     <div class="single-todo-top">
                         <div class="todo-title">
                             <h6>{{$todo->title}}</h6>

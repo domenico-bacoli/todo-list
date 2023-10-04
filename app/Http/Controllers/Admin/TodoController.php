@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Todo;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
@@ -18,7 +19,9 @@ class TodoController extends Controller
      */
     public function index()
     {
-        $todos = Todo::all();
+        // $todos = Todo::all();
+        $user_id = Auth::id();
+        $todos = Todo::where('user_id', $user_id)->get();
 
         return view('admin.todos.index', compact('todos'));
     }
@@ -46,6 +49,8 @@ class TodoController extends Controller
 
         $todo = new Todo();
         $todo->fill($formData);
+        $todo->user_id = Auth::id();
+
         $todo->slug = Str::slug($todo->title, '-');
 
         $todo->save();
