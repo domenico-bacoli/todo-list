@@ -34,10 +34,10 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
     
     Route::resource('todos', TodoController::class)->parameters(['todos' => 'todo:slug']);
 
-    Route::get('/', [DashboardController::class, 'home']);
-
-    
-    
+    // Route::get('/', [DashboardController::class, 'home']);
+    Route::get('/', function() {
+        return redirect()->action([TodoController::class, 'index']);
+    });
 });
 
 

@@ -23,13 +23,18 @@
                             </form>
                         </div>
                     </div>
-
-                    
-
-                    <div class="date-button-container">
+                    <div class="date-button-container">        
                         <div class="expiration-date">
-                            <div class="expiration-date-text">{{$todo->expiration_date}}</div>
-                        </div>
+                            @php 
+                                $expirationDate = $todo->expiration_date;
+                                if (empty($expirationDate)) {
+                                    echo '&nbsp;'; // Inserisci una stringa vuota con uno spazio non stampabile
+                                } else {
+                                    echo \Carbon\Carbon::createFromTimestamp(strtotime($expirationDate))->format('d-m-Y');
+                                }
+                            @endphp
+                            <div class="expiration-date-text">{{$expirationDate ? 'Scadenza' : ''}}</div>
+                        </div>                       
                         <div class="icon">
                             <div class="open-icon">
                                 <a href="{{route('admin.todos.show', $todo->slug)}}"><i class="fa-solid fa-magnifying-glass"></i></a>
@@ -43,8 +48,8 @@
                 </div>   
             @endforeach
             </div>
-        <div class="button-add">
-            <a href="{{route('admin.todos.create')}}"><button class="add-todo">+</button></a>   
+        <div class="button-absolute">
+            <a href="{{route('admin.todos.create')}}"><button class="add-todo"><i class="fa-solid fa-plus"></i></button></a>   
         </div>
     </div> 
     <script>
@@ -56,6 +61,4 @@
       });
     </script> 
 </div>
-
-
 @endsection

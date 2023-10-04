@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Todo;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class TodoController extends Controller
@@ -17,6 +19,7 @@ class TodoController extends Controller
     public function index()
     {
         $todos = Todo::all();
+
         return view('admin.todos.index', compact('todos'));
     }
 
@@ -39,6 +42,7 @@ class TodoController extends Controller
     public function store(Request $request)
     {
         $formData = $request->all();
+        $this->validation($formData);
 
         $todo = new Todo();
         $todo->fill($formData);
@@ -82,6 +86,7 @@ class TodoController extends Controller
     public function update(Request $request, Todo $todo)
     {
         $formData = $request->all();
+        $this->validation($formData);
 
         $todo->slug = Str::slug($formData['title'], '-');
         $todo->update($formData);
@@ -100,5 +105,16 @@ class TodoController extends Controller
         $todo->delete();
 
         return redirect()->route('admin.todos.index');
+    }
+
+    private function validation($formData) {
+        $validator = Validator::make($formData, [
+            'title' => 'required|max:50|min:3',
+            'note' => 'nullable',
+        ], [
+            'title.max' => 'Il titolo deve avere massimo :max caratteri',
+            'title.required' => 'Inserisci un titolo',
+            'title.min' => 'Il titolo deve avere almeno :min caratteri',
+        ])->validate();
     }
 }

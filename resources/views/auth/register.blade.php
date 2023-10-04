@@ -43,11 +43,11 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" onkeyup='check();'>
 
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                    <strong>La password deve contenere almeno 8 caratteri</strong>
                                 </span>
                                 @enderror
                             </div>
@@ -57,7 +57,8 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" onkeyup='check();'>
+                                <span id='message'></span>
                             </div>
                         </div>
 
@@ -74,4 +75,23 @@
         </div>
     </div>
 </div>
+<script>
+    const check = function() {
+        if (document.getElementById('password').value == document.getElementById('password-confirm').value) {
+            if(document.getElementById('password').value.length == 0){
+                document.getElementById('message').style.color = '';
+                document.getElementById('message').innerHTML = '';
+            } else if(document.getElementById('password').value.length >= 8){
+                document.getElementById('message').style.color = 'green';
+                document.getElementById('message').innerHTML = 'La password corrisponde!';
+            }else{
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerHTML = 'La password è troppo corta!';
+            }
+        } else {
+          document.getElementById('message').style.color = 'red';
+          document.getElementById('message').innerHTML = 'La password non corrisponde!';
+        }
+    }
+</script>
 @endsection

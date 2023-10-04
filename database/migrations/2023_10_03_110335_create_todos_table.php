@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('todos', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 100)->unique();
+            $table->string('title', 50)->unique();
             $table->text('note')->nullable();
-            $table->date('expiration_date');
-            $table->boolean('is_completed');
-            $table->string('slug', 100);
+            $table->date('expiration_date')->nullable();
+            $table->boolean('is_completed')->default(false);
+            $table->string('slug', 50);
             $table->timestamps();
         });
     }
