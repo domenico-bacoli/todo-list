@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
-    <title>DFS - Todo List</title>
+    <title>Todo List</title>
 
     {{-- favicon --}}
     <link rel="shortcut icon" sizes="114x114" href="{{ asset('/db-favicon.ico') }}">
@@ -91,7 +91,7 @@
             </div>
         </nav>
 
-        <main class="container container-centered">
+        <main class="">
             @yield('content')
         </main>
     </div>
