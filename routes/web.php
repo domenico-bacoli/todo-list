@@ -31,6 +31,8 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function(){
     Route::post('completed/{todo}', [CompletedController::class, 'index'])->name('completed.index');
+    Route::post('completed/show/{todo}', [CompletedController::class, 'show'])->name('completed.show');
+
     
     Route::resource('todos', TodoController::class)->parameters(['todos' => 'todo:slug']);
 

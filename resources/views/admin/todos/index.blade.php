@@ -14,7 +14,7 @@
 
                         {{-- Gestione todo completati --}}
                         
-                        <div id="is-completed">
+                        <div class="is-completed">
                             <form action="{{route('admin.completed.index', $todo)}}" method="POST">
                                 @csrf
             

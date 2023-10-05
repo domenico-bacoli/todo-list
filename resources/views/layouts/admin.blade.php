@@ -98,7 +98,7 @@
             </div>
         </nav>
 
-        <main class="container container-centered">
+        <main class="">
             @yield('content')
         </main>
     </div>

@@ -4,8 +4,20 @@
 @section('content')
 
 <div class="container container-centered">
-    <div class="single-todo-container">
-        <h2 class="todo-title">{{$todo->title}}</h2>
+    <div class="single-todo-container {{$todo->is_completed ? 'todo-completed' : ''}}">
+        <div class="title-is-completed-container">
+            <h2 class="todo-title">{{$todo->title}}</h2>
+
+            {{-- Gestione todo completati --}}                
+            <div id="is-completed">
+                <form action="{{route('admin.completed.show', $todo)}}" method="POST">
+                    @csrf
+
+                    <label class="form-check-label"></label>
+                    <input name="is_completed" class="form-check-input submitCheckbox" type="radio" {{ $todo->is_completed ? 'checked' : '' }}>
+                </form>
+            </div>
+        </div>
         <div class="todo-note">
             <h4>Note:</h4>
             <p class="todo-note-text">{{$todo->note}}</p>
@@ -26,6 +38,7 @@
                 </button> 
             </div>
         </div>
+
         <div class="button-absolute">
             <a href="{{route('admin.todos.index')}}"><i class="fa-solid fa-angle-left return-back"></i></a>   
         </div>
@@ -56,5 +69,13 @@
         </div>
     </div>
 </div>
+<script>
+    let checkboxes = document.querySelectorAll(".submitCheckbox");
+
+    checkboxes.forEach(function(checkbox) { checkbox.addEventListener('click', function() {
+      this.closest('form').submit();
+    });
+  });
+</script>
 
 @endsection

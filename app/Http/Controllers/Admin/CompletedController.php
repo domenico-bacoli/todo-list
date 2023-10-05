@@ -18,4 +18,16 @@ class CompletedController extends Controller
 
         return redirect()->action([TodoController::class, 'index']);
     }
+
+    public function show(Todo $todo)
+    {
+        if ($todo->is_completed) {
+            $todo->update(['is_completed' => false]);
+        } else {
+            $todo->update(['is_completed' => true]);
+        }
+
+        return redirect()->action([TodoController::class, 'show'], $todo);
+    }
+
 }
