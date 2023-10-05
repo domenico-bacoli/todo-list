@@ -4,7 +4,7 @@
 <div class="todo-container">
     <h1>Crea un nuovo todo</h1>
 
-    <form action="{{route('admin.todos.store')}}" method="POST" class="w-50">
+    <form action="{{route('admin.todos.store')}}" method="POST" class="form-width">
         @csrf
 
         <div class="mb-3">

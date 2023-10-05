@@ -5,7 +5,7 @@
     <div class="todo-container">
         <h1>Modifica Todo</h1>
 
-        <form action="{{route('admin.todos.update', $todo)}}" method="POST" class="w-50">
+        <form action="{{route('admin.todos.update', $todo)}}" method="POST" class="form-width">
             @csrf
             @method('PUT')
 

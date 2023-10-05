@@ -42,6 +42,10 @@ input{
     border-radius: 14px;
 }
 
+.form-width{
+    width: 50%;
+}
+
 .todo-container{
     display: flex;
     flex-direction: column;
@@ -355,7 +359,11 @@ input{
     .image-container{
         display: flex;
         width: 700px;
-    
+
+        .mobile-image{
+            display: none;
+        }
+
         img{
             width: 100%;
         }
@@ -369,3 +377,349 @@ input{
 }
 
 // END welcome style
+
+
+// START MOBILE todos.index STYLE 
+@media screen and (max-width: 767px) {
+    .form-width{
+        width: 80%;
+    }
+    //todos.create todos.edit and style
+    .todo-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 100%;
+        height: calc(100vh - 56px);
+        background-color: #f7f9fb;
+        background-image: linear-gradient(62deg, #f7f9fb 0%, #fbfbff 100%);
+        box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+        border-radius: 0;
+        padding: 0 20px 0;
+
+        h1{
+            margin-bottom: 30px;
+        }
+    
+        .button-absolute{
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            z-index: 2;
+        
+            .add-todo{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 80px;
+                height: 80px;
+                border: none;
+                border-radius: 50%;
+                background-color: white;
+                box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.4);
+                font-size: 2.5em;
+                color: #2872fc;
+            }
+        }
+    }
+
+
+    .container.container-centered{
+        display: flex;
+        flex-direction: column;
+        justify-content: unset;
+        align-items: unset;
+        height: unset;
+        padding: 0;
+    }
+
+    .todo-container-index{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: calc(100vh - 56px);
+        border-radius: 0;
+        padding: 10px 0 0;  
+    
+        h1{
+            font-size: 2.2em;
+            padding: 16px 20px 10px;
+        }
+    
+        .todo-index{
+            display: flex;
+            flex-flow: row wrap;
+            gap: 20px;
+            padding: 20px 10px;
+            overflow: auto;
+    
+            .single-todo{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                width: calc(100% / 2 - (20px / 2 * 1));
+                height: unset;
+                max-width: 250px;
+                min-height: 180px;
+                border-radius: 20px;
+                padding: 20px 16px;
+                box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+    
+                .single-todo-top{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    width: 100%;
+    
+                    .todo-title{
+                        width: 60%;
+                        
+                        h6{
+                            font-size: 1.05em;
+                        }
+                    }
+                    
+                    input{
+                        font-size: 26px;
+                        box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
+                        cursor: pointer;
+                        margin: 0;
+                    }
+                }
+    
+                .date-button-container{
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
+                    gap: 6px;
+
+                    .expiration-date{
+                        display: none;
+                        font-size: 0.7em;
+                    }
+
+                    .expiration-date-text{
+                        display: none;
+                    }
+    
+                    .icon{
+                        display: flex;
+                        gap: 8px;
+                    }
+    
+                    .open-icon, .edit-icon{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 48px;
+                        height: 48px;
+                        border-radius: 50%;
+                        background-color: #252525;
+                        color: white;
+                        
+                        i{
+                            font-size: 0.95em;
+                        }
+                    }
+    
+                    a{
+                        color: white;
+                    }
+    
+                    .expiration-date-text{
+                        font-size: 0.8em;
+                    }
+                }
+            }
+        }
+    
+        .button-absolute{
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            z-index: 2;
+        
+            .add-todo{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 80px;
+                height: 80px;
+                border: none;
+                border-radius: 50%;
+                background-color: white;
+                box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.4);
+                font-size: 2.5em;
+                color: #2872fc;
+            }
+        }
+    }    
+}
+// END MOBILE todos.index STYLE 
+
+// START MOBILE todos.show STYLE
+@media screen and (max-width: 767px) {
+
+    .single-todo-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 30px;
+        position: relative;
+        width: 100%;
+        height: calc(100vh - 56px);
+        background-color: #f7f9fb;
+        background-image: linear-gradient(62deg, #f7f9fb 0%, #fbfbff 100%);
+        box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+        border-radius: 0;
+        padding: 10px 30px;
+    
+        .todo-title{
+            font-size: 2.3em;
+        }
+    
+        .button-absolute{
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            z-index: 2;
+        
+            .return-back{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 80px;
+                height: 80px;
+                border: none;
+                border-radius: 50%;
+                background-color: white;
+                box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.4);
+                font-size: 2.6em;
+                color: #2872fc;
+            }
+        }
+    
+        .single-todo-button{
+            display: flex;
+            gap: 14px;
+    
+            .show-edit-icon{
+                background-color: #252525;
+    
+                a{
+                    border: none;
+                    padding: 0;
+                    margin: 0;
+                    background-color: #252525;
+    
+                    i{
+                        padding-top: 2px;
+                        font-size: 1.9em;
+                        color: white;
+                    }
+                }
+            }
+    
+            .trash-icon{
+                background-color: #f8253a;
+    
+                button{
+                    border: none;
+                    padding: 0;
+                    margin: 0;
+                    background-color: #f8253a;
+    
+                    i{  
+                        padding-top: 2px;
+                        background-color: #f8253a;
+                        font-size: 1.9em;
+                        color: white;
+                    }
+                }
+            }
+    
+            .trash-icon, .show-edit-icon {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                margin: 0;
+            }
+        }
+    }
+
+}
+// END MOBILE todos.show STYLE
+
+
+// START MOBILE welcome style
+@media screen and (max-width: 767px) {
+    .home-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+
+        .title-container{
+            padding-top: 30px;
+            padding-bottom: 10px;
+            width: 100%;
+
+            h1{
+                text-align: center;
+            }
+        }
+        .welcome-container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: unset;
+            gap: 20px;
+            padding-top: 0;
+            height: 100%;
+            overflow: auto;
+    
+            .image-container{
+                display: flex;
+                width: unset;
+                height: 350px;
+    
+                .mobile-image{
+                    display: block;
+                }
+    
+                .desktop-image{
+                    display: none;
+                }
+    
+                img{
+                    width: unset;
+                    height: 100%;
+                }
+            }
+    
+            .content{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                .content-text{
+                    p{
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+
+
+}
+
+// END MOBILE welcome style

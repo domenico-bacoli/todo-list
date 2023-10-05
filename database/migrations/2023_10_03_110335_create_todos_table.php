@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('todos', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 50)->unique();
+            $table->string('title', 50);
             $table->text('note')->nullable();
             $table->date('expiration_date')->nullable();
             $table->boolean('is_completed')->default(false);

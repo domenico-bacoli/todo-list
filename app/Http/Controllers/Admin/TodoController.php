@@ -21,7 +21,7 @@ class TodoController extends Controller
     {
         // $todos = Todo::all();
         $user_id = Auth::id();
-        $todos = Todo::where('user_id', $user_id)->get();
+        $todos = Todo::where('user_id', $user_id)->orderBy('created_at', 'desc')->get();
 
         return view('admin.todos.index', compact('todos'));
     }
