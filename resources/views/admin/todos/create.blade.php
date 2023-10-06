@@ -7,7 +7,7 @@
 
         <form action="{{route('admin.todos.store')}}" method="POST" class="form-width">
             @csrf
-
+            
             <div class="mb-3">
                 <label for="title">Titolo</label>
                 <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" value="{{old('title')}}" required>
@@ -34,5 +34,4 @@
         </div>
     </div> 
 </div> 
-
 @endsection

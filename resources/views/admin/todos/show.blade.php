@@ -1,8 +1,6 @@
 @extends('layouts/admin')
 
-{{-- @section('title', Auth::user()->name . '' . '-' . '' . $todo->title) --}}
 @section('content')
-
 <div class="container container-centered">
     <div class="single-todo-container {{$todo->is_completed ? 'todo-completed' : ''}}">
         <div class="title-is-completed-container">
@@ -12,7 +10,6 @@
             <div id="is-completed">
                 <form action="{{route('admin.completed.show', $todo)}}" method="POST">
                     @csrf
-
                     <label class="form-check-label"></label>
                     <input name="is_completed" class="form-check-input submitCheckbox" type="radio" {{ $todo->is_completed ? 'checked' : '' }}>
                 </form>
@@ -38,12 +35,11 @@
                 </button> 
             </div>
         </div>
-
         <div class="button-absolute">
             <a href="{{route('admin.todos.index')}}"><i class="fa-solid fa-angle-left return-back"></i></a>   
         </div>
 
-        <!-- Modale di bootstrap -->
+        <!-- Modale di bootstrap ( cancellazione definitiva todo ) -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -71,11 +67,9 @@
 </div>
 <script>
     let checkboxes = document.querySelectorAll(".submitCheckbox");
-
     checkboxes.forEach(function(checkbox) { checkbox.addEventListener('click', function() {
       this.closest('form').submit();
     });
   });
 </script>
-
 @endsection

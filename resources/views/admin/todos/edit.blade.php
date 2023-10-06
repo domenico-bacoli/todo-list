@@ -28,7 +28,6 @@
                 <label for="expiration_date">Data di Scadenza</label>
                 <input type="date" name="expiration_date" id="expiration_date" class="form-control" value="{{old('expiration_date') ?? $todo->expiration_date}}">
             </div>
-
             <button type="submit" class="btn btn-primary me-3">Modifica</button>
         </form>
         <div class="button-absolute">

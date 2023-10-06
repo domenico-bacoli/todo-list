@@ -13,7 +13,6 @@
                         </div>
 
                         {{-- Gestione todo completati --}}
-                        
                         <div class="is-completed">
                             <form action="{{route('admin.completed.index', $todo)}}" method="POST">
                                 @csrf
@@ -25,10 +24,11 @@
                     </div>
                     <div class="date-button-container">        
                         <div class="expiration-date">
+                            {{-- Gestione formato della data di scadenza --}}
                             @php 
                                 $expirationDate = $todo->expiration_date;
                                 if (empty($expirationDate)) {
-                                    echo '&nbsp;'; // Inserisci una stringa vuota con uno spazio non stampabile
+                                    echo '&nbsp;'; // Inserisce una stringa vuota con uno spazio non stampabile
                                 } else {
                                     echo \Carbon\Carbon::createFromTimestamp(strtotime($expirationDate))->format('d-m-Y');
                                 }
@@ -44,21 +44,20 @@
                             </div>   
                         </div>
                     </div>
-
                 </div>   
             @endforeach
-            </div>
+        </div>
         <div class="button-absolute">
             <a href="{{route('admin.todos.create')}}"><button class="add-todo"><i class="fa-solid fa-plus"></i></button></a>   
         </div>
     </div> 
-    <script>
-        let checkboxes = document.querySelectorAll(".submitCheckbox");
-  
-        checkboxes.forEach(function(checkbox) { checkbox.addEventListener('click', function() {
-          this.closest('form').submit();
-        });
-      });
-    </script> 
 </div>
+<script>
+    let checkboxes = document.querySelectorAll(".submitCheckbox");
+
+    checkboxes.forEach(function(checkbox) { checkbox.addEventListener('click', function() {
+        this.closest('form').submit();
+    });
+    });
+</script> 
 @endsection

@@ -26,14 +26,14 @@ Route::get('/', function () {
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-//Le rotte di amministrazione devono avere il prefisso "admin/."
-//che il nome delle rotte inizi con "admin."
-
+//Le rotte di amministrazione devono avere il prefisso "admin/ o admin."
+//il nome delle rotte inizia con "admin."
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function(){
+    //rotte per la gestione dei todo completati
     Route::post('completed/{todo}', [CompletedController::class, 'index'])->name('completed.index');
     Route::post('completed/show/{todo}', [CompletedController::class, 'show'])->name('completed.show');
 
-    
+    //CRUD
     Route::resource('todos', TodoController::class)->parameters(['todos' => 'todo:slug']);
 
     // Route::get('/', [DashboardController::class, 'home']);
@@ -41,8 +41,6 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
         return redirect()->action([TodoController::class, 'index']);
     });
 });
-
-
 
 
 Route::middleware('auth')->group(function () {
